@@ -12,11 +12,11 @@ export default {
   },
 
   Mutation: {
-    createResolution() {
-      console.log("Got Here!");
-      // const resolutionId = Resolutions.insert({
-      //   name: "test Res"
-      // });
+    createResolution(obj, { name }, context) {
+      const resolutionId = Resolutions.insert({
+        name
+      });
+      return Resolutions.findOne(resolutionId);
     }
   }
 };
