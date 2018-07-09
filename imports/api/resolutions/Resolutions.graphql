@@ -1,8 +1,7 @@
-
-
 type Resolution {
   _id: String!
   name: String!
+  goals: [Goal]
 }
 
 type Query {
@@ -12,3 +11,4 @@ type Query {
 type Mutation {
   createResolution(name: String!): Resolution
 }
+ 
