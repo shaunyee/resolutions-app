@@ -11,4 +11,3 @@ type Query {
 type Mutation {
   createResolution(name: String!): Resolution
 }
- 
