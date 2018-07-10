@@ -4,7 +4,7 @@ import Goals from "./goals";
 export default {
 
   Mutation: {
-    createGoal(obj, { name, resolutionId }) {
+    createGoal(obj, { name, resolutionId, userId }) {
       const goalId = Goals.insert({
         name,
         resolutionId,
@@ -13,6 +13,7 @@ export default {
       return Goals.findOne(goalId);
     },
     toggleGoal(obj, { _id }) {
+      if(userId){
       const goal = Goals.findOne(_id);
       Goals.update(_id, {
         $set: {
@@ -20,6 +21,8 @@ export default {
         }
       });
       return Goals.findOne(_id);
+    }
+    throw new Error("Unauthorized");
     }
   }
 };
